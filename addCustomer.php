@@ -12,7 +12,7 @@ print "
             <meta charset='UTF-8'>
             <title>Title</title>
         </head>
-        <body style='background-color:lightgray;'>
+        <body style='background-color:white;'>
 ";
 
 if (isset($_POST['submission'])) {
@@ -25,26 +25,16 @@ if (isset($_POST['submission'])) {
         $salt = "e4djuki9";
         if (!existingCustomer($con, $uName)) {
             print " 
-                <div align='center'><h1> Succesfully Added User! </h1></div>
-                <div align='center'>
-                    <br>
-                    <form action='addCustomer.php'>   
-                    <button> Register Another User </button> 
-                    </form>
-                </div>
-                <div align='center'> 
+                <div align='left'><h1> User has been added </h1></div>
+                
+                
+                <div align='left'> 
                     <br> 
-                    <form action='admin.php'> 
-                    <button> Admin Page </button> 
-                    </form> 
-                </div> 
-                <div align='center'> 
-                    <br> 
-                    <form action='user.php'> 
+                    <form action='sucessfullogin.php'> 
                     <button> User Page </button> 
                     </form> 
                 </div> 
-                <div align='center'>
+                <div align='left'>
                     <br>
                     <form action='main.php'>   
                     <button> Main Page </button> 
@@ -68,31 +58,51 @@ if (isset($_POST['submission'])) {
 } else {
 
     print " 
-                <!DOCTYPE html>
-                <html lang='en'>
-                <head>
-                    <meta charset='UTF-8'>
-                    <title>Title</title>
-                </head>
-                <body style='background-color:lightgray;'>
-                <div align='center'><h1> Register User </h1></div>
-                <div align='center'>
-                    <form action='addCustomer.php ' method='POST'>
-                        First name<br>
-                        <input type='text' name='fName'>
-                        <br> Last name<br>
-                        <input type='text' name='lName'>
-                        <br> Username<br>
-                        <input type='text' name='uName'>
-                        <br> Password<br>
-                        <input type='password' name='pWord'> <br><br>
-                        <input type='radio' name='uType' value='nUser'>Normal User
-                        <input type='radio' name='uType' value='admin'>Admin
-                        <br><br>
-                        <input type='submit' value='Submit'>
-                        <input type='hidden' name='submission' value='sA'>
-                    </form>
-                </div>
+    <!DOCTYPE html>
+    <html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+        <title>register</title>
+    </head>
+    <body style='background-color:lightgray;'>
+    <div align='left'><h1> Register User </h1></div>
+    <div align='left'>
+        <form action='addCustomer.php ' method='POST'>
+        <br>
+        <label for=\"psw\"><b>First Name</b></label>
+         <input type=\"text\" placeholder=\"Enter firstname\" name=\"fName\" required>
+        </br>
+        <br>
+        <label for=\"psw\"><b>Lastname</b></label>
+         <input type=\"text\" placeholder=\"Enter Lastname\" name=\"lName\" required>
+        </br>
+        <br>
+        <label for=\"psw\"><b>Username</b></label>
+         <input type=\"text\" placeholder=\"Enter Username\" name=\"uName\" required>
+        </br>
+        <br>
+        <label for=\"psw\"><b>Password</b></label>
+         <input type=\"text\" placeholder=\"Enter password\" name=\"pWord\" required>
+        </br>
+        <br>
+        <label for=\"psw\"><b>Email</b></label>
+        <input type=\"text\" placeholder=\"Enter email\" name=\"#\" required>
+        </br>
+        
+            
+            <input type='checkbox' name='uType' value='nUser'>Normal User
+            <input type='checkbox' name='uType' value='admin'>Admin
+            <br><br>
+            <input type='submit' value='Submit'>
+            
+            <input type='hidden' name='submission' value='sA'>
+            
+            
+            
+            
+        </form>
+
+    </div>
             ";
 
     if (isset($_GET['error'])) {
@@ -114,17 +124,16 @@ if (isset($_POST['submission'])) {
     }
 
     print "
-        <div align='center'>
-            <br>
-            <form action='main.php'>   
-            <button> Main Page </button> 
-            </form>
-        </div>
-        
+    <div align='left'>
+      
+          <button onclick = \"window.location.href = 'main.php';\">Go back</button>
         </form>
-        </body>
-        </html>
-    ";
+    </div>
+    
+    </form>
+    </body>
+    </html>
+";
 }
 
 

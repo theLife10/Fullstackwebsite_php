@@ -8,16 +8,6 @@ if (mysqli_connect_errno())
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-//if (isset($_SESSION["uName"])) {
-//	$username = $_SESSION["uName"];
-//} else {
-//	$username = " a public user";
-//}
-
-//$sql = mysqli_query($con,"SELECT student_id FROM students WHERE student_username = '$loggenOnUser'");
-//while($row = mysqli_fetch_assoc($sql)){
-//	$studentID = $row['student_id'];
-//}
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -34,9 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/sl-1.2.6/datatables.min.css"/>
-
-	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.18/sl-1.2.6/datatables.min.js"></script>
+	
 
 </head>
 
@@ -45,13 +33,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav">
 				<li class="nav-item ">
-					<a class="nav-link" href="sucessfullogin.php">Home <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="sucessfullogin.php">Home <span class="sr-only"></span></a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link active" href="editEntry.php">Edit</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="signout.php">Sign out</a>
+					<a class="nav-link" href="signout.php">Log out</a>
 				</li>
 			</ul>
 
@@ -59,7 +47,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	</nav>
 
 	<div class="container" style="padding-top: 10px">
-		<?php echo"<h1>Edit User: " .$loggenOnUser. "</h1> <br>"; ?>
+		<?php echo"<h1>Edit Item: " .$loggenOnUser. "</h1> <br>"; ?>
 		<form method="post">
 			<div class="form-group">
 				<label for="exampleFormControlInput1">Name</label>

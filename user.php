@@ -33,26 +33,11 @@ if (isset($_SESSION['uName'])) {
         
         
         
-        <div align='center'>
-            <br>
-            <form action='changeAddress.php' method='post' >   
-                <input type='submit' name='chAdr' value='Change Address'> 
-            </form>               
-        </div>
         
-        <div align='center'>
-            <br>
-            <form action='changePassword.php' method='post' >   
-                <input type='submit' name='chPass' value='Change Password'> 
-            </form>  
-        </div>
         
-        <div align='center'>
-            <br>
-            <form action='logout.php' method='post' >   
-                <input type='submit' name='vOrd' value='View Past Orders'> 
-            </form>               
-        </div>
+        
+        
+        
         
         <div align='center'>
             <br>
@@ -64,7 +49,7 @@ if (isset($_SESSION['uName'])) {
     ";
     if (isset($_POST['uInfo'])) {
         printUserData();
-        printUserAddress($uName);
+       
     }
 } else {
     print "
@@ -97,35 +82,3 @@ function printUserData()
         </div>";
 }
 
-function printUserAddress($uName)
-{
-    global $con;
-    $query = "SELECT * FROM userAddress WHERE username= '$uName'";
-    $r = $con->query($query);
-    print " <table  style=\"width:75%\">
-            <tr>
-                <th>Address Line</th>
-                <th>City</th> 
-                <th>State</th>
-                <th>Country</th>
-                <th>Postal</th>
-            </tr>
-    ";
-    $rows = $r->num_rows;
-    for ($i = 0; $i < $rows; ++$i) {
-        print '<tr style="text-align:center;">';
-        $r->data_seek($i);
-        echo '<td >' . $r->fetch_assoc()['address'] . '</td>';
-        $r->data_seek($i);
-        echo '<td >' . $r->fetch_assoc()['city'] . '</td>';
-        $r->data_seek($i);
-        echo '<td >' . $r->fetch_assoc()['state'] . '</td>';
-        $r->data_seek($i);
-        echo '<td >' . $r->fetch_assoc()['country'] . '</td>';
-        $r->data_seek($i);
-        echo '<td >' . $r->fetch_assoc()['postal'] . '</td>';
-        print '</tr><br>';
-
-    }
-    print "</table>";
-}
