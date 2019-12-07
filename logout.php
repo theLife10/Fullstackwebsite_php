@@ -1,10 +1,8 @@
 <?php
-session_start();
-if (isset($_SESSION['uName']) && isset($_POST['Logout'])) {
-    if ($_POST['Logout'] == "Logout") {
-        $_SESSION = array();
-        session_destroy();
+    session_start();
+   
+    if(session_destroy()) {
+        session_unset();
+        header("Location: main.php");
     }
-    header("Location:main.php");
-    exit();
-}
+?>
